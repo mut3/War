@@ -10,6 +10,8 @@ public class WarGUI extends JFrame
 	 
 	public WarGUI() 
 	{
+		setTitle("War");
+		
 		
 
 	}
