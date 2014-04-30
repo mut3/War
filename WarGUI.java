@@ -78,10 +78,10 @@ public class WarGUI extends JFrame
         // Called when the button is pushed.
         public void actionPerformed(ActionEvent e)
         {
-        	nextStepButton.setText("Continue Game");
+        	playButton.setText("Continue Game");
             g.play();
             updateCardImages();
-            updateStatusMessage();
+            updateStatusText();
             
             // If the game is over
             if (g.getGameState() != 0)
@@ -96,7 +96,7 @@ public class WarGUI extends JFrame
 	            	javax.swing.JOptionPane.showMessageDialog(null, "P2 Wins!");
 	            }
 	            // And finish up.
-	            updateStatusMessage(); // To get the "P1 wins!"/"P2 Wins." message
+	            updateStatustext(); // To get the "P1 wins!"/"P2 Wins." message
 	            playButton.setEnabled(false); // Disable the continue button.
             }
             
