@@ -89,15 +89,15 @@ public class WarGUI extends JFrame
             	// Figure out who won
 	            if (g.getGameState() < 0)
 	            {
-	            	javax.swing.JOptionPane.showMessageDialog(null, "The computer won.");
+	            	javax.swing.JOptionPane.showMessageDialog(null, "P1 Wins!");
 	            }
 	            else //g.getGameState() > 0
 	            {
-	            	javax.swing.JOptionPane.showMessageDialog(null, "You win!");
+	            	javax.swing.JOptionPane.showMessageDialog(null, "P2 Wins!");
 	            }
 	            // And finish up.
-	            updateStatusMessage(); // To get the "You win!"/"Computer Wins." message
-	            nextStepButton.setEnabled(false); // Disable the continue button.
+	            updateStatusMessage(); // To get the "P1 wins!"/"P2 Wins." message
+	            playButton.setEnabled(false); // Disable the continue button.
             }
             
 
@@ -157,8 +157,8 @@ public class WarGUI extends JFrame
 	private void updateStatusText()
     {
     	String newText = "<html>"+g.getStatusText()
-    			+ "<br>Your hand size: " + //fill this
-    			+ "<br>Computer's hand size: " + //fill this
+    			+ "<br>P1 hand size: " + g.getDeckSize(1)
+    			+ "<br>P2 hand size: " + g.getDeckSize(2)
     			+ "</html>";
     	try
     	{
