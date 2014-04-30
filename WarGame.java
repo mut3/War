@@ -54,18 +54,6 @@ public class WarGame
 		//end debug prints
 	}
 
-	public boolean hasDeckCards(int player)
-	{
-		switch(player)
-		{
-			case 1:
-				return !player1Deck.isEmpty();
-			case 2:
-				return !player2Deck.isEmpty();
-			default:
-				return true;//this is stupid but this will never be called 
-		}
-	}
 	public String getCardImage(int player)
 	{
 		switch(player)
@@ -78,6 +66,18 @@ public class WarGame
 				return image_path+"back.jpg";//this is stupid but this will never be called 
 		}
 	}
+	public int getDeckSize(int player)
+	{
+		switch(player)
+		{
+			case 1:
+				return player1Deck.size();
+			case 2:
+				return player2Deck.size();
+			default:
+				return -1;//this is stupid but this will never be called 
+		}
+	}
 	public int getGameState()
 	{
 		return gameState;
@@ -85,6 +85,18 @@ public class WarGame
 	public String getStatusText()
 	{
 		return statusText;
+	}
+	public boolean hasDeckCards(int player)
+	{
+		switch(player)
+		{
+			case 1:
+				return !player1Deck.isEmpty();
+			case 2:
+				return !player2Deck.isEmpty();
+			default:
+				return true;//this is stupid but this will never be called 
+		}
 	}
 
 	//Lets write some pseudo code
@@ -116,7 +128,8 @@ public class WarGame
 		else
 		{ 
 			//p2 wins
-			gameState = 1;
+			p2Win();
+			
 		}
 
 		//repeat if-elif-else block for p2
@@ -140,7 +153,7 @@ public class WarGame
 		else
 		{ 
 			//p1 wins
-			gameState = -1;
+			p1Win();
 		}
 
 		//================================
@@ -195,6 +208,14 @@ public class WarGame
 				winnings.add(player2Deck.dealCard());
 		}
 
+	}
+	private void p1Win()
+	{
+		gameState = -1;
+	}
+	private void p2Win()
+	{
+		gameState = 1;
 	}
 		
 
