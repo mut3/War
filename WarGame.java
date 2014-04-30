@@ -115,7 +115,7 @@ public class WarGame
 		//else
 		else
 		{ 
-			//p1 loses
+			//p2 wins
 			gameState = 1;
 		}
 
@@ -139,7 +139,7 @@ public class WarGame
 		//else
 		else
 		{ 
-			//p2 loses
+			//p1 wins
 			gameState = -1;
 		}
 
@@ -151,11 +151,50 @@ public class WarGame
 		{
 			//p1 wins this draw and both cards are added to Winnings 
 			//and they are marked as winners
+			roundWinner=-1;
 		}
 		//elif p2 card > p1 card
-			//p2 """"""
+		else if(p2Card.getRank()>p1Card.getRank())
+		{
+			//p2 wins this draw and both cards are added to Winnings 
+			//and they are marked as winners
+			roundWinner=1;
+		}
 		//else
+		else//p2Card==p1Card
+		{
 			//war starter
+			roundWinner=0;
+		}
+		
+		//===============================
+		//results
+		//===============================
+		//add cards to winnings
+		winnings.add(p1Card);
+		winnings.add(p2Card);
+
+		//distribut winnings to winner or process the war
+		len = winnings.size();
+		switch(roundWinner)
+		{
+			case -1:
+				for (int i=0;i<len;i++) 
+				{
+					p1Winnings.add(winnings.remove(0));
+				}
+				break;
+			case 1:
+				for (int i=0;i<len;i++) 
+				{
+					p2Winnings.add(winnings.remove(0));
+				}
+				break;
+			default://war
+				winnings.add(player1Deck.dealCard());
+				winnings.add(player2Deck.dealCard());
+		}
+
 	}
 		
 
