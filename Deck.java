@@ -60,6 +60,10 @@ public class Deck
      
    
    }
+   public void addCard(Card c)
+   {
+      deck.add(c);
+   }
    public Card dealCard()
    {
       Card c = deck.remove(0);  //  remove it (returns removed object)

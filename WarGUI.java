@@ -96,7 +96,7 @@ public class WarGUI extends JFrame
 	            	javax.swing.JOptionPane.showMessageDialog(null, "P2 Wins!");
 	            }
 	            // And finish up.
-	            updateStatustext(); // To get the "P1 wins!"/"P2 Wins." message
+	            updateStatusText(); // To get the "P1 wins!"/"P2 Wins." message
 	            playButton.setEnabled(false); // Disable the continue button.
             }
             
@@ -111,7 +111,7 @@ public class WarGUI extends JFrame
     	// Set the player's hand to the back of a card if it has cards in it, otherwise set it to nothing.
         if (g.hasDeckCards(1))
         {
-            p1Deck.setIcon(cardBackImage);
+            p1Deck.setIcon(backImage);
         }
         else
         {
@@ -120,7 +120,7 @@ public class WarGUI extends JFrame
         p1Deck.revalidate(); // Repaint
         
         // Set the player's top card on the pile to the correct image if there are cards on the pile, otherwise set it to nothing.
-        if (g.playerTopCard() != null)
+        if (g.getActiveCard(1) != null)
         {
             p1Card.setIcon(g.getCardImage(1));
         }
@@ -134,7 +134,7 @@ public class WarGUI extends JFrame
         // Set the player's hand to the back of a card if it has cards in it, otherwise set it to nothing.
         if (g.hasDeckCards(2))
         {
-            p2Deck.setIcon(cardBackImage);
+            p2Deck.setIcon(backImage);
         }
         else
         {
@@ -143,7 +143,7 @@ public class WarGUI extends JFrame
         p2Deck.revalidate(); // Repaint
         
         // Set the player's top card on the pile to the correct image if there are cards on the pile, otherwise set it to nothing.
-        if (g.playerTopCard() != null)
+        if (g.getActiveCard(2) != null)
         {
             p2Card.setIcon(g.getCardImage(2));
         }

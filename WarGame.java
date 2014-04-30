@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class WarGame
 {	
 	//set card images folder here (will also need to update the path for the card back image in WarGUI)
-	String final image_path = "cards/";
+	final String image_path = "cards/";
 	//player Decks
 	Deck player1Deck;
 	Deck player2Deck;
@@ -54,6 +54,18 @@ public class WarGame
 		//end debug prints
 	}
 
+	public Card getActiveCard(int player)
+	{
+		switch(player)
+		{
+			case 1:
+				return p1Card;
+			case 2:
+				return p2Card;
+			default:
+				return null;//this is stupid but this will never be called 
+		}
+	}
 	public String getCardImage(int player)
 	{
 		switch(player)
@@ -71,9 +83,9 @@ public class WarGame
 		switch(player)
 		{
 			case 1:
-				return player1Deck.size();
+				return player1Deck.cardsRemaining();
 			case 2:
-				return player2Deck.size();
+				return player2Deck.cardsRemaining();
 			default:
 				return -1;//this is stupid but this will never be called 
 		}
@@ -118,9 +130,9 @@ public class WarGame
 		else if(!p1Winnings.isEmpty())
 		{
 			//shuffle p1 deck and flip top card
-			l = p1Winnings.size();
+			int l = p1Winnings.size();
 			for(int i=0;i<l;i++)
-				player1Deck.add(p1Winnings.remove(0));
+				player1Deck.addCard(p1Winnings.remove(0));
 			player1Deck.shuffle();
 			p1Card = player1Deck.dealCard();
 		}
@@ -143,9 +155,9 @@ public class WarGame
 		else if(!p2Winnings.isEmpty())
 		{
 			//shuffle p2 deck and flip top card
-			l = p2Winnings.size();
+			int l = p2Winnings.size();
 			for(int i=0;i<l;i++)
-				player2Deck.add(p2Winnings.remove(0));
+				player2Deck.addCard(p2Winnings.remove(0));
 			player2Deck.shuffle();
 			p2Card = player2Deck.dealCard();
 		}
@@ -188,7 +200,7 @@ public class WarGame
 		winnings.add(p2Card);
 
 		//distribut winnings to winner or process the war
-		len = winnings.size();
+		int len = winnings.size();
 		switch(roundWinner)
 		{
 			case -1:
