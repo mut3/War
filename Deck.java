@@ -16,6 +16,11 @@ public class Deck
    {
             freshDeck();
    }
+   public Deck(null)
+   {
+      //this is for non standard deck sizes
+      deck = new ArrayList<Card>();
+   }
    public void freshDeck()
    {
       deck = new ArrayList<Card>();
@@ -58,7 +63,7 @@ public class Deck
       return (deck.size() == 0);
    }
    // by rank only
-   public static void main(String [] args) 
+   /*public static void main(String [] args) 
    {
       Deck deck = new Deck();
       deck.shuffle();
@@ -78,7 +83,7 @@ public class Deck
       System.out.println(highCard(c1,c2,c3));
       
 
-   }
+   }*/
    public static Card highCard(Card...cards)
    {
    
