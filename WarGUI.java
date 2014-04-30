@@ -32,7 +32,7 @@ public class WarGUI extends JFrame
 	private ImageIcon p2Card;
 	
 	//constructor
-	public WarGUI() throws FileNotFoundException
+	public WarGUI()
 	{
 		g = new WarGame();
 
@@ -42,7 +42,8 @@ public class WarGUI extends JFrame
         }
         catch (IOException derp)
         {
-            throw new FileNotFoundException("Card image: back.jpg not found.");
+            System.err.println("Card image: back.jpg not found.");
+            System.exit(1);
         }
         
 
@@ -122,13 +123,21 @@ public class WarGUI extends JFrame
         // Set the player's top card on the pile to the correct image if there are cards on the pile, otherwise set it to nothing.
         if (g.getActiveCard(1) != null)
         {
-            p1Card.setIcon(g.getCardImage(1));
+            try
+            {
+                p1Pile.setIcon(new ImageIcon(ImageIO.read(new File(g.getCardImage(1)))));
+            }
+            catch(IOException derp)
+            {
+                System.err.println("Card image "+g.getCardImage(1)+" not found.");
+                System.exit(1);    
+            }
         }
         else
         {
-            p1Card.setIcon(null);
+            p1Pile.setIcon(null);
         }
-        p1Card.revalidate(); // Repaint
+        p1Pile.revalidate(); // Repaint
         
         // Repeat above code for computer's hand and pile
         // Set the player's hand to the back of a card if it has cards in it, otherwise set it to nothing.
@@ -145,13 +154,21 @@ public class WarGUI extends JFrame
         // Set the player's top card on the pile to the correct image if there are cards on the pile, otherwise set it to nothing.
         if (g.getActiveCard(2) != null)
         {
-            p2Card.setIcon(g.getCardImage(2));
+            try
+            {
+                p2Pile.setIcon(new ImageIcon(ImageIO.read(new File(g.getCardImage(2)))));
+            }
+            catch(IOException derp)
+            {
+                System.err.println("Card image "+g.getCardImage(2)+" not found.");
+                System.exit(1);    
+            }
         }
         else
         {
-            p2Card.setIcon(null);
+            p2Pile.setIcon(null);
         }
-        p2Card.revalidate(); // Repaint
+        p2Pile.revalidate(); // Repaint
     }
 	//call this method whenever something happens in the game
 	private void updateStatusText()
