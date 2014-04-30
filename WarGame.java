@@ -40,21 +40,25 @@ public class WarGame
 		Deck d = new Deck();
 		//shuffle it
 		d.shuffle();
-		//split it in half and crear
+		//split it in half 
+		//call one half player1Deck and the other half player2Deck
 		Deck player1Deck = new Deck(d,0,26);
 		Deck player2Deck = new Deck(d,26,52);
 		
-      int length1=d.cardsRemaining();
-      int length2=player1Deck.cardsRemaining();
-      int length3=player2Deck.cardsRemaining();
-      System.out.println(length1+" "+length2+" "+length3);
+		//debug prints for decks
+    	/*int length1=d.cardsRemaining();
+    	int length2=player1Deck.cardsRemaining();
+    	int length3=player2Deck.cardsRemaining();
+      	System.out.println(length1+" "+length2+" "+length3);
 		for(int i=0;i<length1;i++)
 			System.out.println(d.getCard(i).toString());
 		for(int i=0;i<length2;i++)
 			System.out.println(player1Deck.getCard(i).toString());
 		for(int i=0;i<length3;i++)
-			System.out.println(player2Deck.getCard(i).toString());
-		//call one half player1Deck and the other half player2Deck
+			System.out.println(player2Deck.getCard(i).toString());*/
+		//end debug prints
+
+		
 		
 	}
 		
