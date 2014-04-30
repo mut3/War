@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class WarGame
 {	
 	//set card images folder here (will also need to update the path for the card back image in WarGUI)
-	String image_path = "cards/";
+	String final image_path = "cards/";
 	//player Decks
 	Deck player1Deck;
 	Deck player2Deck;
@@ -20,6 +20,10 @@ public class WarGame
 	ArrayList<Card> p2Winnings = new ArrayList<Card>();
 	//create neutral winnings Array
 	ArrayList<Card> winnings = new ArrayList<Card>();
+	//gamestate int default to ongoing play mode
+	int gameState=0;
+	//status Message
+	String statusText = "Will has goofed if you can see this message";
 
 
 	//Constructor
@@ -77,10 +81,23 @@ public class WarGame
 				return image_path+"back.jpg";//this is stupid but this will never be called 
 		}
 	}
+	public int getGameState()
+	{
+		return gameState;
+	}
+	public String getStatusText()
+	{
+		return statusText;
+	}
 
 	//Lets write some pseudo code
+	//now lets make it real
 
 	//play
+	public void play()
+	{
+
+	}
 		//if p1 has cards in deck
 			//flip top card
 		//elif p1 has cards in pile
@@ -104,8 +121,8 @@ public class WarGame
 
 	
 	//methods to implement based on GUI
-		//String getStatusText
-		//int getGameState (0 ongoing, negative p1Win, positive p2Win)
+		//_________
+		
 
 
 
