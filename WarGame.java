@@ -55,9 +55,9 @@ public class WarGame
 		switch(player)
 		{
 			case 1:
-				return player1Deck.isEmpty();
+				return !player1Deck.isEmpty();
 			case 2:
-				return player2Deck.isEmpty();
+				return !player2Deck.isEmpty();
 			default:
 				return true;//this is stupid but this will never be called 
 		}
