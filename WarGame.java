@@ -65,7 +65,7 @@ public class WarGame
 				return true;//this is stupid but this will never be called 
 		}
 	}
-	public String getImageName(int player)
+	public String getCardImage(int player)
 	{
 		switch(player)
 		{
@@ -85,7 +85,8 @@ public class WarGame
 			//flip top card
 		//elif p1 has cards in pile
 			//shuffle p1 deck and flip top card
-		//else p1 loses
+		//else 
+			//p1 loses
 
 		//repeat if-elif-else block for p2
 
@@ -104,6 +105,7 @@ public class WarGame
 	
 	//methods to implement based on GUI
 		//String getStatusText
+		//int getGameState (0 ongoing, negative p1Win, positive p2Win)
 
 
 
