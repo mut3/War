@@ -58,6 +58,11 @@ public class WarGame
 			System.out.println(player2Deck.getCard(i).toString());*/
 		//end debug prints
 
+		//create winnings piles
+		ArrayList<Card> p1Winnings = new ArrayList<Card>();
+		ArrayList<Card> p2Winnings = new ArrayList<Card>();
+		//create neutral winnings Array
+		ArrayList<Card> winnings = new ArrayList<Card>();
 		
 		
 	}
