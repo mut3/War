@@ -22,6 +22,8 @@ public class WarGame
 	ArrayList<Card> winnings = new ArrayList<Card>();
 	//gamestate int default to ongoing play mode
 	int gameState=0;
+	//roundwinner int
+	int roundWinner;
 	//status Message
 	String statusText = "Will has goofed if you can see this message";
 
@@ -50,11 +52,6 @@ public class WarGame
 		for(int i=0;i<length3;i++)
 			System.out.println(player2Deck.getCard(i).toString());*/
 		//end debug prints
-
-		
-	
-		
-		
 	}
 
 	public boolean hasDeckCards(int player)
@@ -96,25 +93,71 @@ public class WarGame
 	//play
 	public void play()
 	{
-
-	}
+		//==========================
+		//draw cards
+		//==========================
 		//if p1 has cards in deck
+		if(!player1Deck.isEmpty())
+		{
 			//flip top card
+			p1Card = player1Deck.dealCard();
+		}
 		//elif p1 has cards in pile
+		else if(!p1Winnings.isEmpty())
+		{
 			//shuffle p1 deck and flip top card
-		//else 
+			l = p1Winnings.size();
+			for(int i=0;i<l;i++)
+				player1Deck.add(p1Winnings.remove(0));
+			player1Deck.shuffle();
+			p1Card = player1Deck.dealCard();
+		}
+		//else
+		else
+		{ 
 			//p1 loses
+			gameState = 1;
+		}
 
 		//repeat if-elif-else block for p2
+		//if p1 has cards in deck
+		if(!player2Deck.isEmpty())
+		{
+			//flip top card
+			p2Card = player2Deck.dealCard();
+		}
+		//elif p2 has cards in pile
+		else if(!p2Winnings.isEmpty())
+		{
+			//shuffle p2 deck and flip top card
+			l = p2Winnings.size();
+			for(int i=0;i<l;i++)
+				player2Deck.add(p2Winnings.remove(0));
+			player2Deck.shuffle();
+			p2Card = player2Deck.dealCard();
+		}
+		//else
+		else
+		{ 
+			//p2 loses
+			gameState = -1;
+		}
 
+		//================================
 		//compare cards
+		//================================
 		//if p1 card > p2 card
+		if(p1Card.getRank()>p2Card.getRank())
+		{
 			//p1 wins this draw and both cards are added to Winnings 
 			//and they are marked as winners
+		}
 		//elif p2 card > p1 card
 			//p2 """"""
 		//else
 			//war starter
+	}
+		
 
 
 		//return Winnings AL and a 1 or 2 showing who won or 0 for war
