@@ -6,7 +6,10 @@ nerds use javaDocs
 */
 import java.util.ArrayList;
 public class WarGame
-{	//player Decks
+{	
+	//set card images folder here (will also need to update the path for the card back image in WarGUI)
+	String image_path = "cards/";
+	//player Decks
 	Deck player1Deck;
 	Deck player2Deck;
 	//Cards for playing
@@ -60,6 +63,18 @@ public class WarGame
 				return !player2Deck.isEmpty();
 			default:
 				return true;//this is stupid but this will never be called 
+		}
+	}
+	public String getImageName(int player)
+	{
+		switch(player)
+		{
+			case 1:
+				return image_path+p1Card.getImageName();
+			case 2:
+				return image_path+p2Card.getImageName();
+			default:
+				return image_path+"back.jpg";//this is stupid but this will never be called 
 		}
 	}
 
