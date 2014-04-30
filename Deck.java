@@ -9,36 +9,65 @@ This is an arrayList based Deck Class which guess what, creates a deck of Card o
 
 public class Deck 
 {
-   final int CARDS_IN_DECK = 52;
+   
 
    ArrayList<Card> deck;
+   //creates a brand new 52 card deck
    public Deck()
    {
+      final int CARDS_IN_DECK = 52;
             freshDeck();
    }
-   public Deck(null)
+   public Deck(Deck otherDeck)
    {
-      //this is for non standard deck sizes
+      int length = otherDeck.cardsRemaining();
       deck = new ArrayList<Card>();
+      for(int i=0;i<length;i++)
+         deck.add(otherDeck.getCard(i));
+
    }
+   //Takes a pre-existing Deck and creates a smaller deck using the index from-to
+   public Deck(Deck ogDeck, int indFrom, int indTo)
+   {
+      final int CARDS_IN_DECK = indTo-indFrom;
+      Deck sourceDeck = new Deck(ogDeck);
+      int length = sourceDeck.cardsRemaining();
+      //debug prints
+      System.out.println(length);
+      System.out.println(CARDS_IN_DECK);
+      //end debug
+      deck = new ArrayList<Card>();
+      
+      for(int i=0;i<indFrom && i<=length;i++)
+         sourceDeck.dealCard();
+      for(int i=0;i<CARDS_IN_DECK;i++)
+         deck.add(sourceDeck.dealCard());
+   }
+
    public void freshDeck()
    {
       deck = new ArrayList<Card>();
-      System.out.println(deck.size());
+      
 
       for (int r = Card.ACE; r<=Card.KING;r++)
       {
-         for (int s=Card.SPADES;s<=Card.CLUBS;s++)
+         for (int s=Card.SPADES;s<=Card.DIAMONDS;s++)
          {
-           deck.add(new Card(r,s));
+           deck.add(new Card(s,r));
          }
       }
+      System.out.println(deck.size());
      
    
    }
    public Card dealCard()
    {
       Card c = deck.remove(0);  //  remove it (returns removed object)
+      return c;
+   }
+   public Card getCard(int i)
+   {
+      Card c = deck.get(i);
       return c;
    }
    public int cardsRemaining()

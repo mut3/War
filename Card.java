@@ -22,7 +22,7 @@ public class Card
 		rank = inputRank;
 		suit = inputSuit;
 
-		imageName = suit + rank +".jpg";
+		imageName =""+suit + rank +".jpg";
 	}
 
 	//methods
