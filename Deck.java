@@ -7,12 +7,12 @@ This is an arrayList based Deck Class which guess what, creates a deck of Card o
 */
 
 
-public class Deck1 
+public class Deck 
 {
    final int CARDS_IN_DECK = 52;
 
    ArrayList<Card> deck;
-   public Deck1()
+   public Deck()
    {
             freshDeck();
    }
@@ -60,7 +60,7 @@ public class Deck1
    // by rank only
    public static void main(String [] args) 
    {
-      Deck1 deck = new Deck1();
+      Deck deck = new Deck();
       deck.shuffle();
       int i = 0;
 //      while (deck.cardsRemaining() > 0)

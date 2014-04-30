@@ -14,12 +14,15 @@ public class Card
 
 	//private variables
 	private int rank, suit;
+	private String imageName;
 
 	//constructor takes in ints for suit and rank and sets them
 	public Card(int inputSuit, int inputRank)
 	{
 		rank = inputRank;
 		suit = inputSuit;
+
+		imageName = suit + rank +".jpg";
 	}
 
 	//methods
@@ -31,6 +34,11 @@ public class Card
 	public int getRank()
 	{
 		return rank;
+	}
+
+	public String getImageName()
+	{
+		return imageName;
 	}
 
 	public String toString()
