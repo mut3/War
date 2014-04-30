@@ -50,6 +50,19 @@ public class WarGame
 		
 	}
 
+	public boolean hasDeckCards(int player)
+	{
+		switch(player)
+		{
+			case 1:
+				return player1Deck.isEmpty();
+			case 2:
+				return player2Deck.isEmpty();
+			default:
+				return true;//this is stupid but this will never be called 
+		}
+	}
+
 	//Lets write some pseudo code
 
 	//play
