@@ -39,7 +39,8 @@ public class WarGame
 		//call one half player1Deck and the other half player2Deck
 		player1Deck = new Deck(d,0,26);
 		player2Deck = new Deck(d,26,52);
-		
+
+		statusText = "Welcome to War";
 		//debug prints for decks
     	/*int length1=d.cardsRemaining();
     	int length2=player1Deck.cardsRemaining();
@@ -168,6 +169,7 @@ public class WarGame
 			p1Win();
 		}
 
+
 		//================================
 		//compare cards
 		//================================
@@ -192,6 +194,8 @@ public class WarGame
 			roundWinner=0;
 		}
 		
+		statusText = "Player 1 drew "+p1Card.toString()
+		+"\nPlayer 2 drew "+p2Card.toString(); 
 		//===============================
 		//results
 		//===============================
@@ -204,18 +208,21 @@ public class WarGame
 		switch(roundWinner)
 		{
 			case -1:
+				statusText+=", Player 1 wins the hand.";
 				for (int i=0;i<len;i++) 
 				{
 					p1Winnings.add(winnings.remove(0));
 				}
 				break;
 			case 1:
+				statusText+=", Player 2 wins the hand.";
 				for (int i=0;i<len;i++) 
 				{
 					p2Winnings.add(winnings.remove(0));
 				}
 				break;
 			default://war
+				statusText+=", war!";
 				winnings.add(player1Deck.dealCard());
 				winnings.add(player2Deck.dealCard());
 		}

@@ -200,8 +200,8 @@ public class WarGUI extends JFrame
 	public void updateStatusText()
     {
     	String newText = "<html>"+g.getStatusText()
-    			+ "<br>P1 hand size: " + g.getDeckSize(1)
-    			+ "<br>P2 hand size: " + g.getDeckSize(2)
+    			+ "<br>P1 deck size: " + g.getDeckSize(1)
+    			+ "<br>P2 deck size: " + g.getDeckSize(2)
     			+ "</html>";
     	try
     	{
@@ -215,8 +215,8 @@ public class WarGUI extends JFrame
     }
     public void updateScores()
     {
-        p1Score = g.getDeckSize(1);
-        p2Score = g.getDeckSize(2);
+        p1Score.setText(String.valueOf(g.getDeckSize(1)));
+        p2Score.setText(String.valueOf(g.getDeckSize(2)));
     }
 	public static void main(String[] args) 
 	{
