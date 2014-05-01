@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 /**
@@ -24,6 +25,8 @@ public class WarGUI extends JFrame
 	private JLabel p1Pile;
 	private JLabel p2Pile;
 	private JLabel statusText;
+    private JLabel p1Score;
+    private JLabel p2Score;
 	//lonely button
 	private JButton playButton;
 	//images
@@ -64,11 +67,29 @@ public class WarGUI extends JFrame
 	{
 		//create a text field to print status messages in can use HTML :)
 		statusText = new JLabel("This is War");
+        //create cards
+        p1Deck = new JLabel();
+        p2Deck = new JLabel();
+        p1Pile = new JLabel();
+        p2Pile = new JLabel();
+        p1Score = new JLabel();
+        p2Score = new JLabel();
+        update();
 		//create play button
 		playButton = new JButton("Play");
 		//add listener on the play button
 		playButton.addActionListener(new PlayButtonListener());
 		//create the panels
+        panel1 = new JPanel();
+        panel2 = new JPanel();
+
+        panel1.add(p1Score);
+        panel1.add(p1Deck);
+        panel1.add(p1Pile);
+        panel1.add(p2Pile);
+        panel1.add(p2Deck);
+        panel1.add(p2Score);
+
 		panel2.add(statusText);
 		panel2.add(playButton);
 	}
@@ -81,8 +102,7 @@ public class WarGUI extends JFrame
         {
         	playButton.setText("Continue Game");
             g.play();
-            updateCardImages();
-            updateStatusText();
+            update();
             
             // If the game is over
             if (g.getGameState() != 0)
@@ -105,9 +125,15 @@ public class WarGUI extends JFrame
         }
     }
 
+    public void update()
+    {
+        updateCardImages();
+        updateStatusText();
+        updateScores();
+    }
 
 	//call this everytime something happens
-	private void updateCardImages()
+	public void updateCardImages()
     {
     	// Set the player's hand to the back of a card if it has cards in it, otherwise set it to nothing.
         if (g.hasDeckCards(1))
@@ -171,7 +197,7 @@ public class WarGUI extends JFrame
         p2Pile.revalidate(); // Repaint
     }
 	//call this method whenever something happens in the game
-	private void updateStatusText()
+	public void updateStatusText()
     {
     	String newText = "<html>"+g.getStatusText()
     			+ "<br>P1 hand size: " + g.getDeckSize(1)
@@ -187,7 +213,11 @@ public class WarGUI extends JFrame
     		return; //Work around a Java bug...
     	}
     }
-
+    public void updateScores()
+    {
+        p1Score = g.getDeckSize(1);
+        p2Score = g.getDeckSize(2);
+    }
 	public static void main(String[] args) 
 	{
 	    WarGUI wgui = new WarGUI();
